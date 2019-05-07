@@ -1,0 +1,151 @@
+{
+    "title": "AutomationManagementClient",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/azure.com/automation-webhook/2015-10-31/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://management.azure.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "azure_auth": {
+                "label": "Azure Active Directory OAuth2 Flow",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://login.microsoftonline.com/common/oauth2/authorize"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "Webhook_ListByAutomationAccount": {
+            "main": "./lib/actions/Webhook_ListByAutomationAccount.js",
+            "title": "Retrieve a list of webhooks.",
+            "description": "Retrieve a list of webhooks.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Webhook_ListByAutomationAccount.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Webhook_GenerateUri": {
+            "main": "./lib/actions/Webhook_GenerateUri.js",
+            "title": "Generates a Uri for use in creating a webhook.",
+            "description": "Generates a Uri for use in creating a webhook.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Webhook_GenerateUri.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Webhook_Delete": {
+            "main": "./lib/actions/Webhook_Delete.js",
+            "title": "Delete the webhook by name.",
+            "description": "Delete the webhook by name.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Webhook_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Webhook_Get": {
+            "main": "./lib/actions/Webhook_Get.js",
+            "title": "Retrieve the webhook identified by webhook name.",
+            "description": "Retrieve the webhook identified by webhook name.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Webhook_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Webhook_Update": {
+            "main": "./lib/actions/Webhook_Update.js",
+            "title": "Update the webhook identified by webhook name.",
+            "description": "Update the webhook identified by webhook name.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Webhook_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Webhook_CreateOrUpdate": {
+            "main": "./lib/actions/Webhook_CreateOrUpdate.js",
+            "title": "Create the webhook identified by webhook name.",
+            "description": "Create the webhook identified by webhook name.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Webhook_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
